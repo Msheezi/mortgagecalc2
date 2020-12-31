@@ -103,16 +103,16 @@ export const CalcPage = () => {
                     />
             </Grid>
             <Grid item xs={false} sm={4}/>
-            <Grid item xs={12} sm={4}>
-                <Button variant="outlined" color="primary">Calculate</Button>
-            </Grid>
+            
             <Grid item xs={false} sm={4}/>
                 <AmortTable paymentData={testData}/>
             </Grid>
 
             </Grid>
             <Grid item xs={false} sm={2}></Grid>
-
+            <Grid style={{margin: "8px auto", }} item xs={12} sm={4}>
+                <Button  variant="outlined" color="primary">Calculate</Button>
+            </Grid>
         </Grid>
     )
 }

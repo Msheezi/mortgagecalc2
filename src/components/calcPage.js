@@ -50,6 +50,13 @@ export const CalcPage = () => {
     // const [loanTerm, setLoanTerm] = useState("")
     const [inputs, setInputs] = useState({loanAmt: "", interestRate: "", loanTerm: "", extraPayment: ""})
 
+/**Calculations
+ *  - set a state variable as array to store individual payments
+ *  - if extra payments is blank run calcs
+ *  - if extrapayments run base calc to get total interest paid amount
+ *      - run extra calc to incorporate extrapayments
+ */
+
     const classes = useStyles()
 
     const handleChange = (e)=> {

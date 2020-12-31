@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {Grid, makeStyles, TextField} from '@material-ui/core'
+import {Grid, makeStyles, TextField, Button} from '@material-ui/core'
 import { AmortTable } from './amortTable'
 
 const useStyles = makeStyles({
@@ -19,6 +19,26 @@ const testData = [
     {month: 2, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 80000},
     {month: 3, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 70000},
     {month: 4, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 60000},
+    {month: 5, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 50000},
+    {month: 5, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 50000},
+    {month: 5, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 50000},
+    {month: 5, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 50000},
+    {month: 5, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 50000},
+    {month: 5, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 50000},
+    {month: 5, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 50000},
+    {month: 5, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 50000},
+    {month: 5, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 50000},
+    {month: 5, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 50000},
+    {month: 5, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 50000},
+    {month: 5, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 50000},
+    {month: 5, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 50000},
+    {month: 5, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 50000},
+    {month: 5, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 50000},
+    {month: 5, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 50000},
+    {month: 5, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 50000},
+    {month: 5, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 50000},
+    {month: 5, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 50000},
+    {month: 5, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 50000},
     {month: 5, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 50000},
 ]
 
@@ -70,6 +90,8 @@ export const CalcPage = () => {
                     name={"extraPayment"}
                     
                     />
+                    <br/>
+                    <Button variant="outlined" color="primary">Calculate</Button>
                 </div>
                 
                 <AmortTable paymentData={testData}/>

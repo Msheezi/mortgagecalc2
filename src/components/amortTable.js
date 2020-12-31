@@ -10,6 +10,7 @@ import { Paper,makeStyles, Table, TableCell, TableContainer, TableHead, TableRow
             // minWidth: "200px", 
             margin: "5px auto ",
             // boxSizing: "border-box",
+            maxHeight: "400px",
             width: "95%"
           },
           table: {
@@ -20,7 +21,10 @@ import { Paper,makeStyles, Table, TableCell, TableContainer, TableHead, TableRow
             maxWidth: "800px",
             minWidth: "200px", 
             margin: "0 auto", 
+            
+            
             "& th": {
+                backgroundColor: "#54DEFD",
                 padding: "2pt"
 
             } 
@@ -49,23 +53,34 @@ export const AmortTable = ({paymentData})=>{
     const paymentDetails = paymentData.map(payment =>  {
         const {month, ttlPayment, interestPaid, principlePaid, extraPayment, remainingPrinciple} = payment
         
+
+        /**
+         * if condition for extra payments 
+         * if extra payments foot displays:
+         *  - Base Interest 
+         *  - Interest paid
+         *  - Money Saved
+         *  - Months Eary
+         */
+
+
         return(
             <TableRow hover key={month}>
                 <TableCell align="center">{month + 1}</TableCell>
                 <TableCell align="center">{ttlPayment}</TableCell>
                 <TableCell align="center">{interestPaid}</TableCell>
                 <TableCell align="center">{principlePaid}</TableCell>
-                
                 <TableCell align="center">{remainingPrinciple}</TableCell>
             </TableRow>
         )
     })
 
     return (
+        <>
         <TableContainer className={classes.container} component={Paper}>
-            <Table className={classes.pageContainer} aria-label="simple table" >
+            <Table stickyHeader className={classes.pageContainer} aria-label="simple table" >
                 <TableHead className={classes.root} xs={12}>
-                    <TableRow  >
+                    <TableRow  id="head">
                         <TableCell align="center">Month</TableCell>
                         <TableCell align="center">Payment</TableCell>
                         <TableCell align="center">Interest</TableCell>
@@ -77,17 +92,18 @@ export const AmortTable = ({paymentData})=>{
                 <TableBody className={classes.body} xs={12}>
                     {paymentDetails}
                 </TableBody>
-                <TableFooter>
+            </Table>
+        </TableContainer>
+                <TableFooter stickyHeader>
                     <TableRow>
-                        <TableCell align="center">Total Months 10</TableCell>
-                        <TableCell align="center">Total Payments 1000000</TableCell>
-                        <TableCell align="center">Total Interest 11000</TableCell>
+                        <TableCell align="center">Months Early 10</TableCell>
+                        <TableCell align="center">Interest Payments 1000000</TableCell>
+                        <TableCell align="center">Savings 11000</TableCell>
                         <TableCell align="center"></TableCell>
                         
                     </TableRow>
                 </TableFooter>
-            </Table>
-        </TableContainer>
+                </>
     )
 
 }

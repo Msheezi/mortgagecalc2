@@ -7,9 +7,7 @@ import { Paper,makeStyles, Table, TableCell, TableContainer, TableHead, TableRow
   const useStyles = makeStyles({
           container: {
             maxWidth: "800px",
-            // minWidth: "200px", 
             margin: "5px auto ",
-            // boxSizing: "border-box",
             maxHeight: "400px",
             width: "95%"
           },
@@ -17,17 +15,13 @@ import { Paper,makeStyles, Table, TableCell, TableContainer, TableHead, TableRow
             minWidth: 650,
           },
           pageContainer: {
-            // width: "100vw",
             maxWidth: "800px",
             minWidth: "200px", 
             margin: "0 auto", 
-            
-            
             "& th": {
                 backgroundColor: "#54DEFD",
                 padding: "2pt"
-
-            } 
+                } 
           }, 
           root: {
               backgroundColor: "#54DEFD",
@@ -35,14 +29,16 @@ import { Paper,makeStyles, Table, TableCell, TableContainer, TableHead, TableRow
               "& th": {
                   color: "white",
                   fontSize: "0.8rem"
-                 
-              }
+                }
           },
           body: {
               "& td":{
                   padding: "1pt", 
                   fontSize: "0.8rem"
-              }
+                }
+          }, 
+          footer: {
+              margin: "0 auto"
           }
           
         });
@@ -94,7 +90,7 @@ export const AmortTable = ({paymentData})=>{
                 </TableBody>
             </Table>
         </TableContainer>
-                <TableFooter stickyHeader>
+                <TableFooter className={classes.footer} stickyHeader>
                     <TableRow>
                         <TableCell align="center">Months Early 10</TableCell>
                         <TableCell align="center">Interest Payments 1000000</TableCell>

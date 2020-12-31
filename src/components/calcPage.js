@@ -4,9 +4,10 @@ import { AmortTable } from './amortTable'
 
 const useStyles = makeStyles({
     container: {
-        marginTop: "50px",
+        marginTop: "30px",
         backgroundColor: "lightestgrey",
-        textAlign: "center"
+        textAlign: "center",
+        height: "100%"
     },
     input: {
         margin: "5px"
@@ -64,37 +65,50 @@ export const CalcPage = () => {
         <Grid container className={classes.container}>
             <Grid item xs={false} sm={2}></Grid>
             <Grid item xs={12} sm={8}> 
-            <div>
-
+            <Grid container>
+            <Grid item xs={12} sm={6}>
                 <TextField className={classes.input} label="Loan Amount" type="text"
                     onChange={handleChange}
                     value={loanAmt}
                     name="loanAmt"
+                    placeholder="No Commas or Periods"
                     
                     />
-                <TextField className={classes.input} label="Interest Rate (ex.) 4.5)" type="text"
+            </Grid>
+            <Grid item xs={12} sm={6}>
+                <TextField className={classes.input} label="Interest Rate" type="text"
                     onChange={handleChange}
                     value={interestRate}
                     name={"interestRate"}
+                    placeholder="ex.) 4.5"
                     
                     />
-                <TextField className={classes.input} label="Loan Term (months)" type="text"
+            </Grid>
+            <Grid item xs={12} sm={6}>
+                <TextField className={classes.input} label="Loan Term" type="text"
                     onChange={handleChange}
                     value={loanTerm}
                     name={"loanTerm"}
+                    placeholder="Enter Term in Months"
                     
                     />
+            </Grid>
+            <Grid item xs={12} sm={6}>
                 <TextField className={classes.input} label="Extra Payment" type="text"
                     onChange={handleChange}
                     value={extraPayment}
                     name={"extraPayment"}
+                    placeholder="No Commas or Periods"
                     
                     />
-                    <br/>
-                    <Button variant="outlined" color="primary">Calculate</Button>
-                </div>
-                
+            </Grid>
+            <Grid item xs={false} sm={4}/>
+            <Grid item xs={12} sm={4}>
+                <Button variant="outlined" color="primary">Calculate</Button>
+            </Grid>
+            <Grid item xs={false} sm={4}/>
                 <AmortTable paymentData={testData}/>
+            </Grid>
 
             </Grid>
             <Grid item xs={false} sm={2}></Grid>

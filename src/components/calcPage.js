@@ -27,7 +27,7 @@ export const CalcPage = () => {
     // const [loanAmt, setLoanAmt] = useState("")
     // const [interestRate, setInterestRate] = useState("")
     // const [loanTerm, setLoanTerm] = useState("")
-    const [inputs, setInputs] = useState({loanAmt: "", interestRate: "", loanTerm: ""})
+    const [inputs, setInputs] = useState({loanAmt: "", interestRate: "", loanTerm: "", extraPayment: ""})
 
     const classes = useStyles()
 
@@ -37,36 +37,45 @@ export const CalcPage = () => {
 
     }
 
-    const {loanAmt, interestRate, loanTerm} = inputs
+    const {loanAmt, interestRate, loanTerm, extraPayment} = inputs
 
     return (
 
         <Grid container className={classes.container}>
-            <Grid item xs={2}></Grid>
-            <Grid item xs={8}> 
+            <Grid item xs={1} sm={2}></Grid>
+            <Grid item xs={10} sm={8}> 
+            <div>
+
                 <TextField className={classes.input} label="Loan Amount" type="text"
                     onChange={handleChange}
                     value={loanAmt}
                     name="loanAmt"
                     
-                />
+                    />
                 <TextField className={classes.input} label="Interest Rate (ex.) 4.5)" type="text"
                     onChange={handleChange}
                     value={interestRate}
                     name={"interestRate"}
-
-                />
+                    
+                    />
                 <TextField className={classes.input} label="Loan Term (months)" type="text"
                     onChange={handleChange}
                     value={loanTerm}
                     name={"loanTerm"}
-
-                />
+                    
+                    />
+                <TextField className={classes.input} label="Extra Payment" type="text"
+                    onChange={handleChange}
+                    value={extraPayment}
+                    name={"extraPayment"}
+                    
+                    />
+                </div>
                 
                 <AmortTable paymentData={testData}/>
 
             </Grid>
-            <Grid item xs={2}></Grid>
+            <Grid item xs={1} sm={2}></Grid>
 
         </Grid>
     )

@@ -42,8 +42,8 @@ export const CalcPage = () => {
     return (
 
         <Grid container className={classes.container}>
-            <Grid item xs={1} sm={2}></Grid>
-            <Grid item xs={10} sm={8}> 
+            <Grid item xs={false} sm={2}></Grid>
+            <Grid item xs={12} sm={8}> 
             <div>
 
                 <TextField className={classes.input} label="Loan Amount" type="text"
@@ -75,7 +75,7 @@ export const CalcPage = () => {
                 <AmortTable paymentData={testData}/>
 
             </Grid>
-            <Grid item xs={1} sm={2}></Grid>
+            <Grid item xs={false} sm={2}></Grid>
 
         </Grid>
     )

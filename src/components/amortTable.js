@@ -8,23 +8,39 @@ import { Paper,makeStyles, Table, TableCell, TableContainer, TableHead, TableRow
           container: {
             maxWidth: "800px",
             // minWidth: "200px", 
-            margin: "5px auto",
-            boxSizing: "border-box",
-            width: "100%"
+            margin: "5px auto ",
+            // boxSizing: "border-box",
+            width: "95%"
           },
           table: {
             minWidth: 650,
           },
           pageContainer: {
-            width: "100vw",
+            // width: "100vw",
             maxWidth: "800px",
             minWidth: "200px", 
-            margin: "0 auto"
+            margin: "0 auto", 
+            "& th": {
+                padding: "2pt"
+
+            } 
           }, 
           root: {
               backgroundColor: "#54DEFD",
-              color: "white"
+              color: "white", 
+              "& th": {
+                  color: "white",
+                  fontSize: "0.8rem"
+                 
+              }
+          },
+          body: {
+              "& td":{
+                  padding: "1pt", 
+                  fontSize: "0.8rem"
+              }
           }
+          
         });
 
 export const AmortTable = ({paymentData})=>{
@@ -48,17 +64,17 @@ export const AmortTable = ({paymentData})=>{
     return (
         <TableContainer className={classes.container} component={Paper}>
             <Table className={classes.pageContainer} aria-label="simple table" >
-                <TableHead className={classes.root}>
-                    <TableRow className={classes.root}>
+                <TableHead className={classes.root} xs={12}>
+                    <TableRow  >
                         <TableCell align="center">Month</TableCell>
                         <TableCell align="center">Payment</TableCell>
-                        <TableCell align="center">Interest Paid</TableCell>
-                        <TableCell align="center">Principle Paid</TableCell>
+                        <TableCell align="center">Interest</TableCell>
+                        <TableCell align="center">Principle</TableCell>
                         
-                        <TableCell align="center">Remaining Principle</TableCell>
+                        <TableCell align="center">Balance</TableCell>
                     </TableRow>
                 </TableHead>
-                <TableBody>
+                <TableBody className={classes.body} xs={12}>
                     {paymentDetails}
                 </TableBody>
                 <TableFooter>

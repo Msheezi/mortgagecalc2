@@ -51,6 +51,8 @@ export const CalcPage = () => {
     // const [loanTerm, setLoanTerm] = useState("")
     const [inputs, setInputs] = useState({loanAmt: "", interestRate: "", loanTerm: "", extraPayment: ""})
     const [paymentData, setPaymentData] = useState([])
+    const [scheduledInterest, setScheduledInterest] = useState()
+    const [totalInterest, setTotalInterest] = useState()
 /**Calculations
  *  - set a state variable as array to store individual payments
  *  - if extra payments is blank run calcs
@@ -69,7 +71,11 @@ export const CalcPage = () => {
     const runCalcs = (e) =>  {
         
         let results = calc(inputs)
-        setPaymentData(results)
+        
+       
+        setPaymentData(results.paymentData)
+        setScheduledInterest(results.scheduledInterest)
+        setTotalInterest(results.totalInterest)
 
     }
 

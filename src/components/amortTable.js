@@ -43,7 +43,7 @@ import { Paper,makeStyles, Table, TableCell, TableContainer, TableHead, TableRow
           
         });
 
-export const AmortTable = ({paymentData})=>{
+export const AmortTable = ({paymentData, scheduledInterest, totalInterest})=>{
 
     const classes = useStyles()
     const paymentDetails = paymentData.map((payment, month) =>  {

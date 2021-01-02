@@ -120,11 +120,17 @@ For example, a 30-year fixed mortgage would have 360 payments (30x12=360).
 
     console.log(scheduledInterest, totalInterest)
     /**
-     * return an object paymentdata = {
-     * payments:[], scheduledInterest, totalInterest
+     * return an object paymentsObj = {
+     * paymentData: payments, scheduledInterest, totalInterest
      * }
      */
-    return payments
+        let paymentsObj ={
+            paymentData: payments, 
+            scheduledInterest, 
+            totalInterest
+        }
+
+    return  paymentsObj
    
 }
  

@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {Grid, makeStyles, TextField, Button} from '@material-ui/core'
 import { AmortTable } from './amortTable'
+import {calc} from './calculatorFunc'
 
 const useStyles = makeStyles({
     container: {
@@ -49,7 +50,7 @@ export const CalcPage = () => {
     // const [interestRate, setInterestRate] = useState("")
     // const [loanTerm, setLoanTerm] = useState("")
     const [inputs, setInputs] = useState({loanAmt: "", interestRate: "", loanTerm: "", extraPayment: ""})
-
+    const [paymentData, setPaymentData] = useState([])
 /**Calculations
  *  - set a state variable as array to store individual payments
  *  - if extra payments is blank run calcs
@@ -62,6 +63,13 @@ export const CalcPage = () => {
     const handleChange = (e)=> {
         let newState ={...inputs, [e.target.name]: e.target.value}
         return setInputs(newState)
+
+    }
+
+    const runCalcs = (e) =>  {
+        
+        let results = calc(inputs)
+        setPaymentData(results)
 
     }
 
@@ -112,13 +120,13 @@ export const CalcPage = () => {
             <Grid item xs={false} sm={4}/>
             
             <Grid item xs={false} sm={4}/>
-                <AmortTable paymentData={testData}/>
+                <AmortTable paymentData={paymentData}/>
             </Grid>
 
             </Grid>
             <Grid item xs={false} sm={2}></Grid>
             <Grid style={{margin: "8px auto", }} item xs={12} sm={4}>
-                <Button  variant="outlined" color="primary">Calculate</Button>
+                <Button  variant="outlined" color="primary" onClick={(e)=>runCalcs(e)}>Calculate</Button>
             </Grid>
         </Grid>
     )

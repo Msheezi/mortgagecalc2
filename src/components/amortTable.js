@@ -46,8 +46,8 @@ import { Paper,makeStyles, Table, TableCell, TableContainer, TableHead, TableRow
 export const AmortTable = ({paymentData})=>{
 
     const classes = useStyles()
-    const paymentDetails = paymentData.map(payment =>  {
-        const {month, ttlPayment, interestPaid, principlePaid, extraPayment, remainingPrinciple} = payment
+    const paymentDetails = paymentData.map((payment, month) =>  {
+        const { ttlPayment, interestPaid, principlePaid, extraPayment, remainingPrinciple} = payment
         
 
         /**

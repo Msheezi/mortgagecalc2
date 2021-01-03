@@ -2,14 +2,15 @@
 import React from 'react'
 
 
-import { Paper,makeStyles, Table, TableCell, TableContainer, TableHead, TableRow, TableBody, TableFooter} from '@material-ui/core'
+import { Paper,makeStyles, Table, TableCell, TableContainer, TableHead, TableRow, TableBody} from '@material-ui/core'
 
   const useStyles = makeStyles({
           container: {
             maxWidth: "800px",
             margin: "5px auto ",
             maxHeight: "400px",
-            width: "95%"
+            width: "95%", 
+            position: "relative"
           },
           table: {
             minWidth: 650,
@@ -38,17 +39,80 @@ import { Paper,makeStyles, Table, TableCell, TableContainer, TableHead, TableRow
                 }
           }, 
           footer: {
-              margin: "0 auto"
+              margin: "0 auto",
+              maxWidth: "800px",
+              width: "95%",
+            //   height: "50px",
+              "& td": {
+                  textAlign: "center",
+                  padding: "1pt"
+
+              }, 
+              "& th": {
+                backgroundColor: "#54DEFD",
+                color: "white", 
+                fontSize: "0.8rem",
+               padding: "2pt",
+               textAlign: "center"
+              }
+              
+            //   top: 1
           }
           
         });
 
-export const AmortTable = ({paymentData, scheduledInterest, totalInterest})=>{
+export const AmortTable = ({paymentData, scheduledInterest, totalInterest, loanTerm, extraPayment})=>{
 
     const classes = useStyles()
+
+    const summaryFooter = () => {
+        if (extraPayment.length){
+            let savings = (parseFloat(scheduledInterest) - parseFloat(totalInterest))
+            return (
+        <Table >
+            <TableHead>
+                <TableRow>
+                    <TableCell>Months Early</TableCell>
+                    <TableCell>Actual Interest</TableCell>
+                    <TableCell>Savings</TableCell>
+                </TableRow>
+                </TableHead>
+                <TableBody>
+                <TableRow>
+                    <TableCell>{loanTerm - paymentData.length}</TableCell>
+                    <TableCell>{totalInterest.toLocaleString('en-US', {style: "currency", currency: "USD"})}</TableCell>
+                    <TableCell>{savings.toLocaleString('en-US', {style: "currency", currency: "USD"})}</TableCell>
+                </TableRow>
+            </TableBody>
+        </Table>
+            )
+        } else {
+            return (
+            <Table >
+                <TableHead>
+                <TableRow>
+                    
+                    <TableCell>Total Interest</TableCell>
+                    
+                </TableRow>
+                </TableHead>
+                <TableBody>
+                <TableRow>
+                    
+                    <TableCell>{totalInterest.toLocaleString('en-US', {style: "currency", currency: "USD"})}</TableCell>
+                </TableRow>
+            </TableBody>
+            </Table>
+            )
+        }
+    }
+
+
     const paymentDetails = paymentData.map((payment, month) =>  {
-        const { ttlPayment, interestPaid, principlePaid, extraPayment, remainingPrinciple} = payment
+        const { ttlPayment, interestPaid, principlePaid,  remainingPrinciple} = payment
         
+
+       
 
         /**
          * if condition for extra payments 
@@ -74,7 +138,7 @@ export const AmortTable = ({paymentData, scheduledInterest, totalInterest})=>{
     return (
         <>
         <TableContainer className={classes.container} component={Paper}>
-            <Table stickyHeader className={classes.pageContainer} aria-label="simple table" >
+            <Table stickyHeader="true" className={classes.pageContainer} aria-label="simple table" >
                 <TableHead className={classes.root} xs={12}>
                     <TableRow  id="head">
                         <TableCell align="center">Month</TableCell>
@@ -89,16 +153,15 @@ export const AmortTable = ({paymentData, scheduledInterest, totalInterest})=>{
                     {paymentDetails}
                 </TableBody>
             </Table>
+                
         </TableContainer>
-                <TableFooter className={classes.footer} stickyHeader>
-                    <TableRow>
-                        <TableCell align="center">Months Early 10</TableCell>
-                        <TableCell align="center">Interest Payments 1000000</TableCell>
-                        <TableCell align="center">Savings 11000</TableCell>
-                        <TableCell align="center"></TableCell>
-                        
-                    </TableRow>
-                </TableFooter>
+        <TableContainer component={Paper} className={classes.footer}>
+        {summaryFooter()}
+
+        </TableContainer>
+            
+        
+        
                 </>
     )
 

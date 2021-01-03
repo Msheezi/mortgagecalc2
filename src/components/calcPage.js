@@ -15,35 +15,6 @@ const useStyles = makeStyles({
     }
 })
 
-const testData = [
-    {month: 0, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 100000},
-    {month: 1, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 90000},
-    {month: 2, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 80000},
-    {month: 3, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 70000},
-    {month: 4, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 60000},
-    {month: 5, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 50000},
-    {month: 5, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 50000},
-    {month: 5, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 50000},
-    {month: 5, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 50000},
-    {month: 5, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 50000},
-    {month: 5, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 50000},
-    {month: 5, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 50000},
-    {month: 5, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 50000},
-    {month: 5, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 50000},
-    {month: 5, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 50000},
-    {month: 5, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 50000},
-    {month: 5, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 50000},
-    {month: 5, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 50000},
-    {month: 5, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 50000},
-    {month: 5, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 50000},
-    {month: 5, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 50000},
-    {month: 5, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 50000},
-    {month: 5, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 50000},
-    {month: 5, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 50000},
-    {month: 5, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 50000},
-    {month: 5, ttlPayment: 1000 , interestPaid: 90, principlePaid: 910, extraPayment: 0, remainingPrinciple: 50000},
-]
-
 export const CalcPage = () => {
 
     // const [loanAmt, setLoanAmt] = useState("")
@@ -53,6 +24,7 @@ export const CalcPage = () => {
     const [paymentData, setPaymentData] = useState([])
     const [scheduledInterest, setScheduledInterest] = useState()
     const [totalInterest, setTotalInterest] = useState()
+    const [displayTable, setDisplayTable] = useState(false)
 /**Calculations
  *  - set a state variable as array to store individual payments
  *  - if extra payments is blank run calcs
@@ -76,8 +48,16 @@ export const CalcPage = () => {
         setPaymentData(results.paymentData)
         setScheduledInterest(results.scheduledInterest)
         setTotalInterest(results.totalInterest)
+        setDisplayTable(true)
 
     }
+
+    const table = displayTable ? ( <AmortTable paymentData={paymentData} 
+                    loanTerm={inputs.loanTerm}
+                    scheduledInterest={scheduledInterest}
+                    totalInterest={totalInterest}
+                    extraPayment={inputs.extraPayment}
+                    /> ) : ""
 
     const {loanAmt, interestRate, loanTerm, extraPayment} = inputs
 
@@ -126,7 +106,8 @@ export const CalcPage = () => {
             <Grid item xs={false} sm={4}/>
             
             <Grid item xs={false} sm={4}/>
-                <AmortTable paymentData={paymentData}/>
+                {table}
+               
             </Grid>
 
             </Grid>

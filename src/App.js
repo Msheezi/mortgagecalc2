@@ -1,7 +1,7 @@
-import logo from './logo.svg';
+
 import './App.css';
 import { CalcPage } from './components/calcPage';
-import {AppBar, Toolbar, makeStyles} from '@material-ui/core'
+import {AppBar, makeStyles} from '@material-ui/core'
 
 
 const useStyles = makeStyles({

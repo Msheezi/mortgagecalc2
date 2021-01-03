@@ -39,13 +39,14 @@ import { Paper,makeStyles, Table, TableCell, TableContainer, TableHead, TableRow
                 }
           }, 
           footer: {
-              margin: "0 auto",
+              margin: "5px auto",
               maxWidth: "800px",
               width: "95%",
             //   height: "50px",
               "& td": {
                   textAlign: "center",
-                  padding: "1pt"
+                  padding: "1pt",
+                  fontSize: "0.8rem"
 
               }, 
               "& th": {
@@ -73,13 +74,15 @@ export const AmortTable = ({paymentData, scheduledInterest, totalInterest, loanT
             <TableHead>
                 <TableRow>
                     <TableCell>Months Early</TableCell>
-                    <TableCell>Actual Interest</TableCell>
+                    <TableCell>Scheduled Interest</TableCell>
+                    <TableCell>Interest Paid</TableCell>
                     <TableCell>Savings</TableCell>
                 </TableRow>
                 </TableHead>
                 <TableBody>
                 <TableRow>
                     <TableCell>{loanTerm - paymentData.length}</TableCell>
+                    <TableCell>{scheduledInterest.toLocaleString('en-US', {style: "currency", currency: "USD"})}</TableCell>
                     <TableCell>{totalInterest.toLocaleString('en-US', {style: "currency", currency: "USD"})}</TableCell>
                     <TableCell>{savings.toLocaleString('en-US', {style: "currency", currency: "USD"})}</TableCell>
                 </TableRow>

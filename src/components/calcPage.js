@@ -15,12 +15,14 @@ const useStyles = makeStyles({
     }
 })
 
+const initialState = {loanAmt: "", interestRate: "", loanTerm: "", extraPayment: ""}
+
 export const CalcPage = () => {
 
     // const [loanAmt, setLoanAmt] = useState("")
     // const [interestRate, setInterestRate] = useState("")
     // const [loanTerm, setLoanTerm] = useState("")
-    const [inputs, setInputs] = useState({loanAmt: "", interestRate: "", loanTerm: "", extraPayment: ""})
+    const [inputs, setInputs] = useState(initialState)
     const [paymentData, setPaymentData] = useState([])
     const [scheduledInterest, setScheduledInterest] = useState()
     const [totalInterest, setTotalInterest] = useState()
@@ -52,6 +54,14 @@ export const CalcPage = () => {
 
     }
 
+    const clearCalcs = () => {
+        setInputs(initialState)
+        setPaymentData([])
+        setScheduledInterest("")
+        setTotalInterest("")
+        setDisplayTable(false)
+    }
+
     const table = displayTable ? ( <AmortTable paymentData={paymentData} 
                     loanTerm={inputs.loanTerm}
                     scheduledInterest={scheduledInterest}
@@ -72,7 +82,7 @@ export const CalcPage = () => {
                     onChange={handleChange}
                     value={loanAmt}
                     name="loanAmt"
-                    placeholder="No Commas or Periods"
+                    placeholder="No Special Characters"
                     
                     />
             </Grid>
@@ -99,7 +109,7 @@ export const CalcPage = () => {
                     onChange={handleChange}
                     value={extraPayment}
                     name={"extraPayment"}
-                    placeholder="No Commas or Periods"
+                    placeholder="No Special Characters"
                     
                     />
             </Grid>
@@ -112,9 +122,14 @@ export const CalcPage = () => {
 
             </Grid>
             <Grid item xs={false} sm={2}></Grid>
-            <Grid style={{margin: "8px auto", }} item xs={12} sm={4}>
-                <Button  variant="outlined" color="primary" onClick={(e)=>runCalcs(e)}>Calculate</Button>
+            <Grid style={{margin: "8px auto", }} item xs={12} sm={4} >
+                <div style={{display: "flex", justifyContent: "center"}}>
+                    <Button style={{margin: "5px"}} variant="outlined" color="secondary" onClick={()=>clearCalcs()}>New Calc</Button>
+                    <Button style={{margin: "5px"}} variant="outlined" color="primary" onClick={(e)=>runCalcs(e)}>Calculate</Button>
+
+                </div>
             </Grid>
+            
         </Grid>
     )
 }

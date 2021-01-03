@@ -18,21 +18,19 @@ const useStyles = makeStyles({
 const initialState = {loanAmt: "", interestRate: "", loanTerm: "", extraPayment: ""}
 
 export const CalcPage = () => {
-
-    // const [loanAmt, setLoanAmt] = useState("")
-    // const [interestRate, setInterestRate] = useState("")
-    // const [loanTerm, setLoanTerm] = useState("")
     const [inputs, setInputs] = useState(initialState)
     const [paymentData, setPaymentData] = useState([])
     const [scheduledInterest, setScheduledInterest] = useState()
     const [totalInterest, setTotalInterest] = useState()
     const [displayTable, setDisplayTable] = useState(false)
-/**Calculations
- *  - set a state variable as array to store individual payments
- *  - if extra payments is blank run calcs
- *  - if extrapayments run base calc to get total interest paid amount
- *      - run extra calc to incorporate extrapayments
- */
+    
+    
+    /**Calculations
+     *  - set a state variable as array to store individual payments
+     *  - if extra payments is blank run calcs
+     *  - if extrapayments run base calc to get total interest paid amount
+     *      - run extra calc to incorporate extrapayments
+     */
 
     const classes = useStyles()
 

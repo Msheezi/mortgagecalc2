@@ -42,7 +42,6 @@ import { Paper,makeStyles, Table, TableCell, TableContainer, TableHead, TableRow
               margin: "5px auto",
               maxWidth: "800px",
               width: "95%",
-            //   height: "50px",
               "& td": {
                   textAlign: "center",
                   padding: "1pt",
@@ -57,7 +56,6 @@ import { Paper,makeStyles, Table, TableCell, TableContainer, TableHead, TableRow
                textAlign: "center"
               }
               
-            //   top: 1
           }
           
         });
@@ -140,32 +138,28 @@ export const AmortTable = ({paymentData, scheduledInterest, totalInterest, loanT
 
     return (
         <>
-        <TableContainer className={classes.container} component={Paper}>
-            <Table stickyHeader="true" className={classes.pageContainer} aria-label="simple table" >
-                <TableHead className={classes.root} xs={12}>
-                    <TableRow  id="head">
-                        <TableCell align="center">Month</TableCell>
-                        <TableCell align="center">Payment</TableCell>
-                        <TableCell align="center">Interest</TableCell>
-                        <TableCell align="center">Principle</TableCell>
-                        
-                        <TableCell align="center">Balance</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody className={classes.body} xs={12}>
-                    {paymentDetails}
-                </TableBody>
-            </Table>
-                
-        </TableContainer>
-        <TableContainer component={Paper} className={classes.footer}>
-        {summaryFooter()}
-
-        </TableContainer>
-            
-        
-        
-                </>
+            <TableContainer className={classes.container} component={Paper}>
+                <Table stickyHeader="true" className={classes.pageContainer} aria-label="simple table" >
+                    <TableHead className={classes.root} xs={12}>
+                        <TableRow  id="head">
+                            <TableCell align="center">Month</TableCell>
+                            <TableCell align="center">Payment</TableCell>
+                            <TableCell align="center">Interest</TableCell>
+                            <TableCell align="center">Principle</TableCell>
+                            
+                            <TableCell align="center">Balance</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody className={classes.body} xs={12}>
+                        {paymentDetails}
+                    </TableBody>
+                </Table>
+                    
+            </TableContainer>
+            <TableContainer component={Paper} className={classes.footer}>
+                {summaryFooter()}
+            </TableContainer>
+        </>
     )
 
 }
